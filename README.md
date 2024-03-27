@@ -29,7 +29,11 @@ The `fit` method is used to train the model, and the `test` method is used to te
 
 ## Installation
 
-To install the dependencies, you can run the following command:
+
+We use VSCode Containers to run the project. To run the project, you need to have Docker and VSCode installed on your machine.
+If you don't know how to use Containers in VSCode, you can follow the instructions in the [following link](https://github.com/otavioon/container-workspace).
+
+Once inside the container, you can install the dependencies, running the following command:
 
 ```bash
 pip install -r requirements.txt
