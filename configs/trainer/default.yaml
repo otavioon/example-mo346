@@ -1,0 +1,7 @@
+max_epochs: 10
+accelerator: cpu
+# devices: 1
+logger: 
+  class_path: lightning.pytorch.loggers.CSVLogger
+  init_args:
+    save_dir: "logs"
