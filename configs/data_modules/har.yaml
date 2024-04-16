@@ -1,3 +1,7 @@
+# This file contains the configuration for the Human Activity Recognition (HAR) data module.
+# The HAR data module is responsible for loading the HAR dataset and preparing it for training.
+# class_path: The path to the HAR data module class.
+# init_args: The arguments to pass to the HAR data module class.
 class_path: data_modules.har.HarDataModule
 init_args: 
   root_data_dir: data/example
