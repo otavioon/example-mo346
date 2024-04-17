@@ -1,6 +1,8 @@
-# Example-MO346
+# MO346/MC934 Course work
 
-This is an example of a MO346 project. This project has the following structure:
+This repository contains code and instructions to support the MO346/MC934 course work project. 
+
+This project has the following structure:
 
 - `configs/`: contains the configuration files to instantiate models, data modules, and trainers. It is used by `LightningCLI` to instantiate experiments. The configuration files are written in YAML format and contain the class path (package and class name) and parameters to instantiate the objects.
 - `data/`: contains the data used in the project. Your data should be stored here. This directory is not tracked by git.
@@ -26,6 +28,10 @@ Output files are stored in the `logs/` directory. This directory is not tracked 
 
 The trainer will use standard `fit` and `test` methods from the `LightningModule` class to train and test the model. 
 The `fit` method is used to train the model, and the `test` method is used to test the model.
+
+## Tutorial notebooks
+
+The `1-HAR-dataloader-exploration.ipynb` and `2-HAR-MLP-training.ipynb` notebooks contains instructions on how to read the HAR dataset and train an MLP model to solve the HAR task.
 
 
 ## Installation
@@ -56,6 +62,7 @@ Once you have created the new files, you can create new configuration files in t
 ## Authors
 
 - [Otávio Napoli](https://github.com/otavioon)
+- [Edson Borin](https://github.com/eborin)
 
 ## License
 
