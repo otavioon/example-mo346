@@ -268,7 +268,7 @@ class HarDataModule(L.LightningDataModule):
             dataset,
             batch_size=self.batch_size,
             shuffle=shuffle,
-            num_workers=4,
+            num_workers=1,
         )
         return dataloader
     
