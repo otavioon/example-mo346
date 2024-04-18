@@ -1,7 +1,6 @@
 from pathlib import Path
 from typing import List, Tuple, Union
 import lightning as L
-from lightning.pytorch.utilities.types import TRAIN_DATALOADERS
 import numpy as np
 import pandas as pd
 from torch.utils.data import DataLoader, Dataset
