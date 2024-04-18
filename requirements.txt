@@ -1,3 +1,5 @@
 jsonargparse[signatures]>=4.26.1
 lightning
 pandas
+tifffile
+torchmetrics
