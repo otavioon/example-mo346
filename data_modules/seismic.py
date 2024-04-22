@@ -1,5 +1,7 @@
 import glob
 import os
+import urllib.request
+import zipfile
 
 import lightning as L
 import numpy as np
@@ -98,6 +100,13 @@ class SeismicDataModule(L.LightningDataModule):
         if not os.path.exists(self.root_dir):
             # download data
             print("Downloading data")
+            # TODO replace url_to_data with the actual URL
+            url = "url_to_data"
+            urllib.request.urlretrieve(url, self.root_dir + "/f3.zip")
+            # extract data
+            with zipfile.ZipFile(self.root_dir + "/f3.zip", "r") as zip_ref:
+                zip_ref.extractall(self.root_dir)
+            print("Data downloaded and extracted")
 
         self.data_dir = os.path.join(self.root_dir, "images")
         self.labels_dir = os.path.join(self.root_dir, "annotations")
