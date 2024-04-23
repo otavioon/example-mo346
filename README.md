@@ -32,6 +32,7 @@ The `fit` method is used to train the model, and the `test` method is used to te
 ## Tutorial notebooks
 
 The `1-HAR-dataloader-exploration.ipynb` and `2-HAR-MLP-training.ipynb` notebooks contains instructions on how to read the HAR dataset and train an MLP model to solve the HAR task.
+The `3-Seismic-dataloader-exploration.ipynb` and `4-Seismic-Deeplab-training.ipynb` notebooks contains instructions on how to read the Seismic dataset and train an Deeplab v3 model to solve the Seismic task.
 
 
 ## Installation
@@ -63,6 +64,7 @@ Once you have created the new files, you can create new configuration files in t
 
 - [Otávio Napoli](https://github.com/otavioon)
 - [Edson Borin](https://github.com/eborin)
+- [Gabriel Gutierrez](https://github.com/gabrielbg0)
 
 ## License
 
