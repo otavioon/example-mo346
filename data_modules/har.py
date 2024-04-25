@@ -1,3 +1,6 @@
+import os
+import urllib.request
+import zipfile
 from pathlib import Path
 from typing import List, Tuple, Union
 import lightning as L
@@ -233,15 +236,39 @@ class HarDataModule(L.LightningDataModule):
         self.target_column = target_column
         self.flatten = flatten
         self.batch_size = batch_size
+        self.zip_file = os.path.join(self.root_data_dir, "har.zip")
+        self.csv_files = {
+            "train": os.path.join(self.root_data_dir, "train.csv"),
+            "validation": os.path.join(self.root_data_dir, "validation.csv"),
+            "test": os.path.join(self.root_data_dir, "test.csv"),
+
+        }
+        self.setup()
+
+    def setup(self) -> None:
+        # Verify that the data is available. If not, fectch and unzip dataset
+        for k, v in self.csv_files.items():
+            if not os.path.exists(v):
+                print(v,"file is missing")
+                self.fetch_and_unzip_dataset()
+
+    def fetch_and_unzip_dataset(self) -> None:
+
+        if not os.path.exists(self.root_data_dir):
+            print(f"Creating the root data directory: [{self.root_data_dir}]")
+            os.mkdir(self.root_data_dir)
+
+        if not os.path.exists(self.zip_file):
+            print(f"Could not find the zip file [{self.zip_file}]")
+            print(f"Trying to download it.")
+            url = "https://www.ic.unicamp.br/~edson/disciplinas/mo436/2024-1s/data/har.zip"
+            urllib.request.urlretrieve(url, self.zip_file)
+
+        # extract data
+        with zipfile.ZipFile(self.zip_file, "r") as zip_ref:
+            zip_ref.extractall(self.root_data_dir)
+        print("Data downloaded and extracted")
         
-    def prepare_data(self) -> None:
-        # This is a good place to download the data
-        pass
-    
-        # Verify that the data is available
-        for f in ["train.csv", "validation.csv", "test.csv"]:
-            data_dir = self.root_data_dir / f
-            assert data_dir.exists(), f"File `{data_dir}` not found"   
 
     def _get_dataset_dataloader(self, path: Path, shuffle: bool) -> DataLoader[HarDataset]:
         """Create a HarDataset object and return a DataLoader object.
